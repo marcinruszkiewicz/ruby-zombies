@@ -12,7 +12,7 @@ class Player
   end
 
   def update
-    @angle = Utils.get_angle
+    @angle = Utils.get_angle(@x, @y)
     new_x, new_y = @x, @y
 
     # forward

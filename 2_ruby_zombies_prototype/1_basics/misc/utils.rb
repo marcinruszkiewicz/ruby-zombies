@@ -3,10 +3,10 @@ class Utils
     File.join(File.dirname(File.dirname(__FILE__)), 'media', file)
   end
 
-  def self.get_angle
+  def self.get_angle(x, y)
     atan = Math.atan2(
-      $window.width/2 - $window.mouse_x,
-      $window.height/2 - $window.mouse_y
+      x - $window.mouse_x,
+      y - $window.mouse_y
     )
     ((-atan * 180 / Math::PI) - 90)
   end

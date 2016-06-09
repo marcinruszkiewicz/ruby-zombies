@@ -14,8 +14,12 @@ class Player
     @world_y = world_y
   end
 
+  def set_map(map)
+    @map = map
+  end
+
   def update
-    @angle = Utils.get_angle
+    @angle = Utils.get_angle(@x, @y)
     new_x, new_y = @world_x, @world_y
 
     # forward
@@ -42,7 +46,7 @@ class Player
       new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
     end
 
-    @world_x, @world_y = new_x, new_y
+    @world_x, @world_y = new_x, new_y unless @map.out_of_bounds?(new_x, new_y)
   end
 
   def draw

@@ -3,11 +3,12 @@ class PlayState < GameState
   def initialize
     @player = Player.new(300, 100)
     @map = Map.new
+    @player.set_map(@map)
   end
 
   def update
     @player.update
-    $window.caption = "RubyZombies. [FPS: #{Gosu.fps}.]"
+    $window.caption = "RubyZombies. [FPS: #{Gosu.fps}. #{@player.world_x} #{@player.world_y}]"
   end
 
   def draw
