@@ -1,8 +1,1 @@
-## Environment normalization:
-/.bundle/
-/vendor/bundle
-/lib/bundler/man/
-
-Gemfile.lock
-.ruby-version
 .DS_Store

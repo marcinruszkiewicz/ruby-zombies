@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    gosu (0.10.7)
+    gosu_tiled (0.1.1)
+      gosu
+      json
+    json (1.8.3)
+    rake (11.1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  gosu
+  gosu_tiled
+  rake
+
+BUNDLED WITH
+   1.12.5
