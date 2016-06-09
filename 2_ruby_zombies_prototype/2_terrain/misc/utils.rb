@@ -13,5 +13,5 @@ class Utils
 
   def self.transform_degrees_to_radians(angle_in_degrees)
     (Math::PI * 2 * angle_in_degrees) / 360
-  end  
+  end   
 end
