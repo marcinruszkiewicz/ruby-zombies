@@ -46,7 +46,7 @@ class Player
       new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
     end
 
-    @world_x, @world_y = new_x, new_y unless @map.out_of_bounds?(new_x, new_y)
+    @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
   end
 
   def draw
@@ -67,4 +67,8 @@ class Player
       x, y - 10, Gosu::Color::RED,
       x, y + 10, Gosu::Color::RED, 100)
   end
+
+  def can_move_to?(x, y)
+    @map.within_map?(x, y) && @map.tile_walkable?(x, y)
+  end  
 end

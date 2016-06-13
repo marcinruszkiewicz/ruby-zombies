@@ -9,10 +9,16 @@ class Map
     @map.draw(x0, y0)
   end
 
-  def out_of_bounds?(x, y)
-    return true if x < 0 || y < 0
-    return true if x > @map.width || y > @map.height
+  def within_map?(x, y)
+    (0..@map.width).include?(x) && (0..@map.height).include?(y)
+  end
 
-    false
+  def tile_walkable?(x, y)
+    walkable = true
+    @map.layers.each do |layer|
+      next if layer.data['name'] == 'ground'
+      walkable = false if layer.tile?(x, y) == 0
+    end
+    walkable
   end
 end
