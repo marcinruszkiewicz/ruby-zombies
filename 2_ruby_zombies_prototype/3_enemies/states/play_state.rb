@@ -32,6 +32,9 @@ class PlayState < GameState
     number.times do 
       x = rand(0..@map.width)
       y = rand(0..@map.height)
+
+      redo unless @map.tile_walkable?(x, y)
+
       Zombie.new(@object_pool, x, y)
     end
   end
