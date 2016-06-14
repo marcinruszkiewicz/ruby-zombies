@@ -1,11 +1,17 @@
+GIT
+  remote: git://github.com/marcinruszkiewicz/gosu-tiled.git
+  revision: c5393f5b9a5c15f381854ed4b0eec8d71394ac3a
+  branch: development
+  specs:
+    gosu_tiled (0.1.1)
+      gosu
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
     gosu (0.10.7)
     gosu_texture_packer (0.1.6)
-      gosu
-      json
-    gosu_tiled (0.1.1)
       gosu
       json
     json (1.8.3)
@@ -18,7 +24,7 @@ PLATFORMS
 DEPENDENCIES
   gosu
   gosu_texture_packer
-  gosu_tiled
+  gosu_tiled!
   rake
   rmagick
 

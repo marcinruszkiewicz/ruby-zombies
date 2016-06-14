@@ -4,6 +4,9 @@
   <image source="tilesheet_complete.png" width="1728" height="1280"/>
  </tileset>
  <layer name="ground" width="30" height="30">
+  <properties>
+   <property name="collision" type="bool" value="false"/>
+  </properties>
   <data encoding="csv">
 3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,5,5,3,4,
 3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,5,5,3,4,
@@ -38,6 +41,9 @@
 </data>
  </layer>
  <layer name="walls" width="30" height="30">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
