@@ -1,6 +1,7 @@
 require 'gosu'
 require 'gosu_tiled'
 require 'gosu_texture_packer'
+require 'pry'
 
 root_dir = File.dirname(__FILE__)
 require_pattern = File.join(root_dir, '**/*.rb')

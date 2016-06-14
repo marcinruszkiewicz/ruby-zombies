@@ -16,8 +16,8 @@ class Map
   def tile_walkable?(x, y)
     walkable = true
     @map.layers.each do |layer|
-      next if layer.data['name'] == 'ground'
-      walkable = false if layer.tile?(x, y) == 0
+      next unless layer.properties['collision']
+      walkable = false if layer.tile_at(x, y).to_i > 0
     end
     walkable
   end
