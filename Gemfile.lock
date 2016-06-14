@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/marcinruszkiewicz/gosu-tiled.git
-  revision: 0ede5ca18012ac07de0c351b2e8629f5255fb410
+  revision: eba00d520291cbb2995c8a7902523267a4f224bd
   branch: development
   specs:
     gosu_tiled (0.2)

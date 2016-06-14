@@ -22,31 +22,38 @@ class Player
     @angle = Utils.get_angle(@x, @y)
     new_x, new_y = @world_x, @world_y
 
+    move_me = false
     # forward
     if $window.button_down?(Gosu::KbW)
+      move_me = true
       new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle - 90))
       new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle - 90))
     end
 
     # backward
     if $window.button_down?(Gosu::KbS)
+      move_me = true
       new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle + 90))
       new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle + 90))
     end
 
     # strafe left
     if $window.button_down?(Gosu::KbA)
+      move_me = true
       new_x += @speed * Math.sin(Utils.transform_degrees_to_radians(@angle))
       new_y -= @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
     end    
 
     # strafe right
     if $window.button_down?(Gosu::KbD)
+      move_me = true
       new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle))
       new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
     end
 
-    @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
+    if move_me
+      @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
+    end
   end
 
   def draw

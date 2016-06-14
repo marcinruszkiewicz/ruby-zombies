@@ -17,7 +17,7 @@ class Map
     walkable = true
     @map.layers.each do |layer|
       next unless layer.properties['collision']
-      walkable = false if layer.tile_at(x, y).to_i > 0
+      walkable = false if layer.tile_at_pixels(x, y).to_i > 0
     end
     walkable
   end

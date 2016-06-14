@@ -8,7 +8,7 @@ class PlayState < GameState
 
   def update
     @player.update
-    $window.caption = "RubyZombies. [FPS: #{Gosu.fps}. #{@player.world_x} #{@player.world_y}]"
+    $window.caption = "RubyZombies. [FPS: #{Gosu.fps}.]"
   end
 
   def draw
