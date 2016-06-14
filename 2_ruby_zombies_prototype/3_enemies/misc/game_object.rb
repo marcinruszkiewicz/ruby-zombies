@@ -21,6 +21,6 @@ class GameObject
   end
 
   def can_move_to?(x, y)
-    @object_pool.map.within_map?(x, y)
+    @object_pool.map.within_map?(x, y) && @object_pool.map.tile_walkable?(x, y)
   end
 end
