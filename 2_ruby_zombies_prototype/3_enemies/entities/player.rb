@@ -5,6 +5,7 @@ class Player < GameObject
 
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('manBlue_stand.png')
+    @moving = @sprites.frame('manBlue_reload.png')
 
     @angle = 0
     @speed = 5
@@ -49,11 +50,14 @@ class Player < GameObject
     end
 
     if move_me
+      @sprite = @moving
       @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
+    else
+      @sprite = @idle
     end
   end
 
   def draw(viewport)
-    @idle.draw_rot(@x, @y, 1, @angle)
+    @sprite.draw_rot(@x, @y, 1, @angle)
   end  
 end

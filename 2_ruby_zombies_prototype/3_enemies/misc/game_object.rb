@@ -1,5 +1,5 @@
 class GameObject
-  attr_accessor :hp, :x, :y, :angle, :world_x, :world_y, :object_pool
+  attr_accessor :hp, :x, :y, :angle, :world_x, :world_y, :object_pool, :sprite
 
   def initialize(object_pool)
     @object_pool = object_pool
@@ -17,7 +17,7 @@ class GameObject
 
   def draw(viewport)
     x0, y0 = viewport.map(&:to_i)
-    @idle.draw_rot(@world_x - x0, @world_y - y0, 1, @angle)
+    @sprite.draw_rot(@world_x - x0, @world_y - y0, 1, @angle)
   end
 
   def can_move_to?(x, y)
