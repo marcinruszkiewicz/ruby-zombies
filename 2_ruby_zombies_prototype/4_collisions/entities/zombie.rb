@@ -1,7 +1,6 @@
 class Zombie < GameObject
   def initialize(object_pool, x, y)
-    super(object_pool)
-    set_on_map(x, y)
+    super(object_pool, x, y)
     
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('zoimbie1_stand.png')

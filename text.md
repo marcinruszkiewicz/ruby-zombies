@@ -12,9 +12,9 @@ Mamy więc na przykład RubyMotion, które pozwala na przygotowanie aplikacji mo
 
 Zanim jednak zaczniemy cokolwiek pakować i dystrybuować, trzeba najpierw mieć co, tak więc przejdźmy dalej.
 
-### 1.2. Libgosu
+### 1.2. Gosu
 
-Jest dostępnych sporo bibliotek wspomagających tworzenie aplikacji, ale ja skupię się dzisiaj na jednej z nich, czyli libgosu. Biblioteka ta daje nam dostęp do rzeczy potrzebnych przy tworzeniu gier, czyli wyświetlania grafiki 2D, dźwięków, obsługi myszy i klawiatury oraz podstawowej pętli aplikacji.
+Jest dostępnych sporo bibliotek wspomagających tworzenie aplikacji, ale ja skupię się dzisiaj na jednej z nich, czyli gosu (https://github.com/gosu/gosu). Biblioteka ta daje nam dostęp do rzeczy potrzebnych przy tworzeniu gier, czyli wyświetlania grafiki 2D, dźwięków, obsługi myszy i klawiatury oraz podstawowej pętli aplikacji.
 
 ## 2. Hello World
 
@@ -92,13 +92,15 @@ Kursor, nazwa okienka oraz viewport wylatują do osobnej klasy Interface. Klasa 
 
 Delikatnie zmieniła się klasa Player - oprócz zmian wynikacjących z refaktoringu, wprowadziłem tam drugiego sprite'a, który jest używany podczas poruszania się postaci. 
 
-Nowością jest klasa Zombie. Ich metoda update jest podobna do metody w klasie Player, z tym że zombie na początku stoją w miejscu, a gdy gracz zbliży się do nich na odległość mniejszą niż 300 pikseli, wtedy nasze zombie zaczyna iść w stronę gracza, wykorzystując znane nam już z pierwszego przykładu funkcje get_movement i get_angle.
+Nowością jest klasa Zombie. Ich metoda update jest podobna do metody w klasie Player, z tym że zombie na początku stoją w miejscu, a gdy gracz zbliży się do nich na odległość mniejszą niż 300 pikseli, wtedy nasze zombie zaczyna iść w stronę gracza, wykorzystując znane nam już z pierwszego przykładu funkcje get_movement i get_angle. Odległość pomiędzy dwoma punktami zapewnia nam tajemnicza funkcja hypot, która jest po prostu długością przeciwprostokątnej w trójkącie prostokątnym. 
 
 Na koniec drobne zmiany w PlayState - generujemy odpowiednią ilość zombie w losowych miejscach na mapie, odrzucając wyniki które trafiły w kafelek, przez który nie można przejść.
 
 ### 3.4. Kolizje obiektów
 
+Niestety na razie nasze zombie nie robią zbyt wiele po dojściu do gracza, czas więc to zmienić, dodając kolizje pomiędzy obiektami. Żeby umożliwić takie kolizje, musimy zdefiniować granice naszych obiektów, co zrobimy dodając dwie metody do klasy GameObject.
 
+Metoda box definiuje nam prostokąt rozmiaru naszego sprite'a, obróconego o odpowiedni kąt, natomiast draw_bounding_box wyświetla nam trójkąciki w rogach tego prostokąta (tylko trójkąciki, żeby nie zasłaniać niepotrzebnie grafiki).
 
 ## 4. Na zakończenie
 
@@ -109,7 +111,7 @@ Oczywiście z racji ograniczonej ilości czasu, nasza gra musi pozostać w doś�
 Przez ostatnią godzinę poznaliście trochę podstaw programowania gier, które tak naprawdę są niezmienne i wykorzystywane w praktycznie każdym silniku gier. Podsumujmy:
 
 * Pętla gry - input, update, draw
-* Trochę matematyki - kąt pomiędzy dwoma punktami, odległość pomiędzy dwoma punktami, podstawy trygonometrii :)
+* Trochę matematyki - kąt pomiędzy dwoma punktami, odległość pomiędzy dwoma punktami, czyli tak naprawdę trygonometria z podstawówki :)
 * Wyświetlanie sprite'ów oraz terenu złożonego z kafelków
 * Podstawowe kolizje pomiędzy obiektami
 
