@@ -1,7 +1,7 @@
 class Zombie < GameObject
-  def initialize(object_pool, world_x, world_y)
+  def initialize(object_pool, x, y)
     super(object_pool)
-    set_on_map(world_x, world_y)
+    set_on_map(x, y)
     
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('zoimbie1_stand.png')
@@ -15,14 +15,14 @@ class Zombie < GameObject
   end
 
   def update
-    dist = Utils.distance(@world_x, @world_y, @player.world_x, @player.world_y)
+    dist = Utils.distance(@x, @y, @player.x, @player.y)
     move_me = false
 
     if dist < 300
-      @angle = Utils.get_angle(@world_x, @world_y, @player.world_x, @player.world_y)
+      @angle = Utils.get_angle(@x, @y, @player.x, @player.y)
 
       move_me = true
-      new_x, new_y = @world_x, @world_y
+      new_x, new_y = @x, @y
 
       dx, dy = Utils.get_movement(@speed, @angle - 90)
       new_x -= dx
@@ -31,7 +31,7 @@ class Zombie < GameObject
 
     if move_me
       @sprite = @moving
-      @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
+      @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
     else
       @sprite = @idle
     end

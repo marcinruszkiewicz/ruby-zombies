@@ -15,6 +15,6 @@ class ObjectPool
   end
 
   def find_by_class(klass)
-    @objects.detect{ |o| o.class.name == klass }
+    @objects.detect { |o| o.class.name == klass }
   end
 end

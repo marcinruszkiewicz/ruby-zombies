@@ -1,7 +1,6 @@
 class Map
   def initialize
     @map = Gosu::Tiled.load_json($window, Utils.media_path('map_1.json'))
-    @x = @y = 0
   end
 
   def draw(viewport)

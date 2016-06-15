@@ -12,7 +12,7 @@ class Interface
   end
 
   def viewport
-    [(@target.world_x - @target.x), (@target.world_y - @target.y)]
+    [(@target.x - @target.screen_x), (@target.y - @target.screen_y)]
   end
 
   def draw_crosshair

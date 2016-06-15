@@ -15,6 +15,12 @@ class ObjectPool
   end
 
   def find_by_class(klass)
-    @objects.detect{ |o| o.class.name == klass }
+    @objects.detect { |o| o.class.name == klass }
+  end
+
+  def find_nearby(object, max_distance)
+    @objects.select do |obj|
+      dist = Utils.distance(obj.x, obj.y, object.x, object.y)
+    end
   end
 end

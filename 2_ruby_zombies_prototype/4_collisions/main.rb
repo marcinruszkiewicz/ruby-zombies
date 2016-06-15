@@ -1,3 +1,4 @@
+require 'pry'
 require 'gosu'
 require 'gosu_tiled'
 require 'gosu_texture_packer'

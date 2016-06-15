@@ -1,19 +1,19 @@
 class Player
-  attr_accessor :x, :y, :angle
+  attr_accessor :screen_x, :screen_y, :angle
 
   def initialize
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('manBlue_stand.png')
     
-    @x = $window.width / 2
-    @y = $window.height / 2
+    @screen_x = $window.width / 2
+    @screen_y = $window.height / 2
     @angle = 0
     @speed = 5
   end
 
   def update
-    @angle = Utils.get_angle(@x, @y)
-    new_x, new_y = @x, @y
+    @angle = Utils.get_angle(@screen_x, @screen_y)
+    new_x, new_y = @screen_x, @screen_y
 
     # forward
     if $window.button_down?(Gosu::KbW)
@@ -39,11 +39,11 @@ class Player
       new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
     end
 
-    @x, @y = new_x, new_y
+    @screen_x, @screen_y = new_x, new_y
   end
 
   def draw
-    @idle.draw_rot(@x, @y, 1, @angle)
+    @idle.draw_rot(@screen_x, @screen_y, 1, @angle)
   end
 
   def draw_crosshair

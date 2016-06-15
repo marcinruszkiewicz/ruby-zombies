@@ -1,7 +1,7 @@
 class Player < GameObject
-  def initialize(object_pool, world_x, world_y)
+  def initialize(object_pool, x, y)
     super(object_pool)
-    set_on_map(world_x, world_y)
+    set_on_map(x, y)
 
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('manBlue_stand.png')
@@ -11,15 +11,15 @@ class Player < GameObject
     @speed = 5
     @hp = 5
 
-    @x = $window.width / 2
-    @y = $window.height / 2
+    @screen_x = $window.width / 2
+    @screen_y = $window.height / 2
   end
 
   def update
-    @angle = Utils.get_angle(@x, @y)
+    @angle = Utils.get_angle(@screen_x, @screen_y)
 
     move_me = false
-    new_x, new_y = @world_x, @world_y
+    new_x, new_y = @x, @y
 
     # forward
     if $window.button_down?(Gosu::KbW)
@@ -55,13 +55,14 @@ class Player < GameObject
 
     if move_me
       @sprite = @moving
-      @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
+      @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
     else
       @sprite = @idle
     end
   end
 
   def draw(viewport)
-    @sprite.draw_rot(@x, @y, 1, @angle)
+    @sprite.draw_rot(@screen_x, @screen_y, 1, @angle)
+    draw_bounding_box(viewport)
   end  
 end

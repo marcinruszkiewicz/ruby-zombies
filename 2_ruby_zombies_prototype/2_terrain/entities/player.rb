@@ -1,17 +1,17 @@
 class Player
-  attr_accessor :x, :y, :angle, :world_x, :world_y
+  attr_accessor :x, :y, :angle, :screen_x, :screen_y
 
-  def initialize(world_x, world_y)
+  def initialize(x, y)
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('manBlue_stand.png')
 
     @angle = 0
     @speed = 5
 
-    @x = $window.width / 2
-    @y = $window.height / 2
-    @world_x = world_x
-    @world_y = world_y
+    @screen_x = $window.width / 2
+    @screen_y = $window.height / 2
+    @x = x
+    @y = y
   end
 
   def set_map(map)
@@ -19,8 +19,8 @@ class Player
   end
 
   def update
-    @angle = Utils.get_angle(@x, @y)
-    new_x, new_y = @world_x, @world_y
+    @angle = Utils.get_angle(@screen_x, @screen_y)
+    new_x, new_y = @x, @y
 
     move_me = false
     # forward
@@ -56,16 +56,16 @@ class Player
     end
 
     if move_me
-      @world_x, @world_y = new_x, new_y if can_move_to?(new_x, new_y)
+      @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
     end
   end
 
   def draw
-    @idle.draw_rot(@x, @y, 1, @angle)
+    @idle.draw_rot(@screen_x, @screen_y, 1, @angle)
   end
 
   def viewport
-    [(@world_x - $window.width/2), (@world_y - $window.height/2)]
+    [(@x - $window.width/2), (@y - $window.height/2)]
   end
 
   def draw_crosshair

@@ -12,8 +12,8 @@ class PlayState < GameState
   end
 
   def draw
-    off_x = @player.x - $window.width/2
-    off_y = @player.y - $window.height/2
+    off_x = @player.screen_x - $window.width/2
+    off_y = @player.screen_y - $window.height/2
     $window.translate(off_x, off_y) do
       @map.draw(@player.viewport)
       @player.draw

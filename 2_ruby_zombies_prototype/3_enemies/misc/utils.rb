@@ -16,7 +16,7 @@ class Utils
   end
 
   def self.distance(x1, y1, x2, y2)
-    Math.hypot(x2-x1, y2-y1)
+    Math.hypot(x2 - x1, y2 - y1)
   end
 
   def self.get_movement(speed, angle)
