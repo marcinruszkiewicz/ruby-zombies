@@ -16,6 +16,13 @@ class Utils
   end
 
   def self.distance(x1, y1, x2, y2)
-    Math.hypot(x2-x1,y2-y1)
+    Math.hypot(x2-x1, y2-y1)
   end
+
+  def self.get_movement(speed, angle)
+    dx = speed * Math.sin(Utils.transform_degrees_to_radians(angle))
+    dy = speed * Math.cos(Utils.transform_degrees_to_radians(angle))
+
+    [dx, dy]
+  end  
 end

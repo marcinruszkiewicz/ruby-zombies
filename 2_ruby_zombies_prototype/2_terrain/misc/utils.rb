@@ -13,5 +13,12 @@ class Utils
 
   def self.transform_degrees_to_radians(angle_in_degrees)
     (Math::PI * 2 * angle_in_degrees) / 360
-  end   
+  end
+
+  def self.get_movement(speed, angle)
+    dx = speed * Math.sin(Utils.transform_degrees_to_radians(angle))
+    dy = speed * Math.cos(Utils.transform_degrees_to_radians(angle))
+
+    [dx, dy]
+  end
 end

@@ -24,29 +24,33 @@ class Player < GameObject
     # forward
     if $window.button_down?(Gosu::KbW)
       move_me = true
-      new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle - 90))
-      new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle - 90))
+      dx, dy = Utils.get_movement(@speed, @angle - 90)
+      new_x -= dx
+      new_y += dy
     end
 
     # backward
     if $window.button_down?(Gosu::KbS)
       move_me = true
-      new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle + 90))
-      new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle + 90))
+      dx, dy = Utils.get_movement(@speed, @angle + 90)
+      new_x -= dx
+      new_y += dy
     end
 
     # strafe left
     if $window.button_down?(Gosu::KbA)
       move_me = true
-      new_x += @speed * Math.sin(Utils.transform_degrees_to_radians(@angle))
-      new_y -= @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
+      dx, dy = Utils.get_movement(@speed, @angle)
+      new_x += dx
+      new_y -= dy
     end    
 
     # strafe right
     if $window.button_down?(Gosu::KbD)
       move_me = true
-      new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle))
-      new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle))
+      dx, dy = Utils.get_movement(@speed, @angle)
+      new_x -= dx
+      new_y += dy
     end
 
     if move_me

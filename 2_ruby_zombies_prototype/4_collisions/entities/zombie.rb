@@ -24,8 +24,9 @@ class Zombie < GameObject
       move_me = true
       new_x, new_y = @world_x, @world_y
 
-      new_x -= @speed * Math.sin(Utils.transform_degrees_to_radians(@angle - 90))
-      new_y += @speed * Math.cos(Utils.transform_degrees_to_radians(@angle - 90))
+      dx, dy = Utils.get_movement(@speed, @angle - 90)
+      new_x -= dx
+      new_y += dy
     end
 
     if move_me
