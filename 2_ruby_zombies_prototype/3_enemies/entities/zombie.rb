@@ -1,15 +1,13 @@
 class Zombie < GameObject
   def initialize(object_pool, x, y)
-    super(object_pool)
-    set_on_map(x, y)
+    super(object_pool, x, y)
     
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('zoimbie1_stand.png')
     @moving = @sprites.frame('zoimbie1_hold.png')
 
     @angle = 0
-    @speed = 2
-    @hp = 3
+    @speed = 1
 
     @player = @object_pool.find_by_class('Player')
   end

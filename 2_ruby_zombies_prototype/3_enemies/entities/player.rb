@@ -1,7 +1,6 @@
 class Player < GameObject
   def initialize(object_pool, x, y)
-    super(object_pool)
-    set_on_map(x, y)
+    super(object_pool, x, y)
 
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('manBlue_stand.png')
@@ -9,7 +8,6 @@ class Player < GameObject
 
     @angle = 0
     @speed = 5
-    @hp = 5
 
     @screen_x = $window.width / 2
     @screen_y = $window.height / 2

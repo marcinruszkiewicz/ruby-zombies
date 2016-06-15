@@ -1,7 +1,7 @@
 class Player
   attr_accessor :x, :y, :angle, :screen_x, :screen_y
 
-  def initialize(x, y)
+  def initialize(x, y, map)
     @sprites = Gosu::TexturePacker.load_json($window, Utils.media_path('sprites.json'), :precise)
     @idle = @sprites.frame('manBlue_stand.png')
 
@@ -12,9 +12,6 @@ class Player
     @screen_y = $window.height / 2
     @x = x
     @y = y
-  end
-
-  def set_map(map)
     @map = map
   end
 

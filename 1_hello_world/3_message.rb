@@ -7,10 +7,13 @@ class HelloWorldGame < Gosu::Window
 
     @message = Gosu::Image.from_text(
       self, 'Hello, World!', Gosu.default_font_name, 42)
+
+    @sound = Gosu::Sample.new self, "beep.wav"
   end
 
   def button_down(id)
     close if id == Gosu::KbEscape
+    @sound.play
   end
 
   def draw

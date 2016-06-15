@@ -1,14 +1,10 @@
 class GameObject
-  attr_accessor :hp, :x, :y, :angle, :screen_x, :screen_y, :object_pool, :sprite
+  attr_accessor :x, :y, :angle, :screen_x, :screen_y, :object_pool, :sprite
 
-  def initialize(object_pool)
+  def initialize(object_pool, x, y)
     @object_pool = object_pool
     @object_pool.objects << self
 
-    @hp = 1
-  end
-
-  def set_on_map(x, y)
     @x = x
     @y = y
   end

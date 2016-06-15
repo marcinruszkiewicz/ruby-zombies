@@ -5,7 +5,7 @@ class PlayState < GameState
     @object_pool = ObjectPool.new(@map)
 
     @player = Player.new(@object_pool, 300, 100)
-    spawn_zombies 10
+    spawn_zombies 50
 
     @interface = Interface.new(@player)
   end
