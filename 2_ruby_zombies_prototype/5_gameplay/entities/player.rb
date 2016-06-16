@@ -52,6 +52,11 @@ class Player < GameObject
       new_y += dy
     end
 
+    # shoot
+    if $window.button_down(Gosu::MsLeft)
+      fire_bullet
+    end
+
     if move_me
       @sprite = @moving
       @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
@@ -63,5 +68,10 @@ class Player < GameObject
   def draw(viewport)
     @sprite.draw_rot(@screen_x, @screen_y, 1, @angle)
     draw_bounding_box(viewport)
-  end  
+  end
+
+  def fire_bullet
+    bullet = Bullet.new(@object_pool, @x, @y)
+    bullet.angle = @angle
+  end
 end

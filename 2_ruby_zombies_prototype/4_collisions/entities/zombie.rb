@@ -14,26 +14,30 @@ class Zombie < GameObject
   end
 
   def update
-    dist = Utils.distance(@x, @y, @player.x, @player.y)
-    move_me = false
-
-    if dist < 300
-      @angle = Utils.get_angle(@x, @y, @player.x, @player.y)
-
-      move_me = true
-      new_x, new_y = @x, @y
-
-      dx, dy = Utils.get_movement(@speed, @angle - 90)
-      new_x -= dx
-      new_y += dy
-    end
-
-    if move_me
-      @sprite = @moving
-      @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
+    if @hp <= 0
+      @removable = true
     else
-      @in_collision = false
-      @sprite = @idle
+      dist = Utils.distance(@x, @y, @player.x, @player.y)
+      move_me = false
+
+      if dist < 300
+        @angle = Utils.get_angle(@x, @y, @player.x, @player.y)
+
+        move_me = true
+        new_x, new_y = @x, @y
+
+        dx, dy = Utils.get_movement(@speed, @angle - 90)
+        new_x -= dx
+        new_y += dy
+      end
+
+      if move_me
+        @sprite = @moving
+        @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
+      else
+        @in_collision = false
+        @sprite = @idle
+      end
     end
   end
 end
