@@ -1,4 +1,6 @@
 class Player < GameObject
+  SHOOT_DELAY = 500
+
   def initialize(object_pool, x, y)
     super(object_pool, x, y)
 
@@ -15,6 +17,8 @@ class Player < GameObject
   end
 
   def update
+    super
+    
     @angle = Utils.get_angle(@screen_x, @screen_y)
 
     move_me = false
@@ -53,7 +57,7 @@ class Player < GameObject
     end
 
     # shoot
-    if $window.button_down(Gosu::MsLeft)
+    if Utils.button_down?(Gosu::MsLeft)
       fire_bullet
     end
 
@@ -65,13 +69,20 @@ class Player < GameObject
     end
   end
 
+  def death
+    GameState.switch(MenuState.instance)    
+  end
+
   def draw(viewport)
     @sprite.draw_rot(@screen_x, @screen_y, 1, @angle)
     draw_bounding_box(viewport)
   end
 
   def fire_bullet
-    bullet = Bullet.new(@object_pool, @x, @y)
-    bullet.angle = @angle
+    if Gosu.milliseconds - (@last_shot || 0) > SHOOT_DELAY
+      @last_shot = Gosu.milliseconds
+      bullet = Bullet.new(@object_pool, @x, @y)
+      bullet.angle = @angle
+    end
   end
 end

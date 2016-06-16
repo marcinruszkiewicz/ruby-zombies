@@ -6,7 +6,8 @@ class Bullet < GameObject
     @sprite = @sprites.frame('tile_187.png')
 
     @angle = 0
-    @speed = 5
+    @speed = 7
+    @disabled_collision_types = ['Player']
   end
 
   def box
@@ -14,6 +15,8 @@ class Bullet < GameObject
   end
 
   def update
+    super
+    
     new_x, new_y = @x, @y
     
     dx, dy = Utils.get_movement(@speed, @angle - 90)
@@ -21,6 +24,7 @@ class Bullet < GameObject
     new_y += dy
 
     @x, @y = new_x, new_y if can_move_to?(new_x, new_y)
+    @removable = true if collides_with_terrain?(new_x, new_y)
   end
 
   def collision_with(object)

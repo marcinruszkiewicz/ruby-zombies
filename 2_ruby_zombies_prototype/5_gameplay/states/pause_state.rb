@@ -1,5 +1,5 @@
 require 'singleton'
-class MenuState < GameState
+class PauseState < GameState
   include Singleton
   attr_accessor :play_state
 
@@ -12,7 +12,7 @@ class MenuState < GameState
 
   def update
     @info = Gosu::Image.from_text(
-      $window, "ESC = Quit, N = New Game",
+      $window, "ESC = Quit, C = Continue, N = New Game",
       Gosu.default_font_name, 30
     )
   end
@@ -32,6 +32,10 @@ class MenuState < GameState
 
   def button_down(id)
     $window.close if id == Gosu::KbEscape
+
+    if id == Gosu::KbC && @play_state
+      GameState.switch(@play_state)
+    end
 
     if id == Gosu::KbN
       @play_state = PlayState.new

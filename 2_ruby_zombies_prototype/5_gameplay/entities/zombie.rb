@@ -1,4 +1,6 @@
 class Zombie < GameObject
+  BITE_DELAY = 1000
+
   def initialize(object_pool, x, y)
     super(object_pool, x, y)
     
@@ -8,12 +10,24 @@ class Zombie < GameObject
 
     @angle = 0
     @speed = 2
-    @hp = 3
+    @hp = 2
 
     @player = @object_pool.find_by_class('Player')
   end
 
+  def collision_with(object)
+    if object == @player
+      if Gosu.milliseconds - (@last_shot || 0) > BITE_DELAY
+        @last_shot = Gosu.milliseconds
+        @player.hp -= 1
+        puts @player.hp
+      end
+    end
+  end
+
   def update
+    super
+
     dist = Utils.distance(@x, @y, @player.x, @player.y)
     move_me = false
 

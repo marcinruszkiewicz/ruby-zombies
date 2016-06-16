@@ -1,5 +1,5 @@
 class GameObject
-  attr_accessor :hp, :x, :y, :angle, :screen_x, :screen_y, :object_pool, :sprite, :removable
+  attr_accessor :hp, :x, :y, :angle, :screen_x, :screen_y, :object_pool, :sprite, :removable, :disabled_collision_types
 
   def initialize(object_pool, x, y)
     @object_pool = object_pool
@@ -10,9 +10,16 @@ class GameObject
     @y = y
     @in_collision = false
     @removable = false
+    @disabled_collision_types = []
   end
 
-  def update; end
+  def update
+    death if @hp < 1
+  end
+
+  def death
+    @removable = true
+  end
 
   def draw(viewport)
     x0, y0 = viewport.map(&:to_i)
@@ -20,8 +27,14 @@ class GameObject
     draw_bounding_box(viewport)
   end
 
+  def collides_with_terrain?(x, y)
+    walkable = @object_pool.map.within_map?(x, y) && @object_pool.map.tile_walkable?(x, y)
+    !walkable
+  end
+
   def can_move_to?(x, y)
-    @object_pool.map.within_map?(x, y) && @object_pool.map.tile_walkable?(x, y) && !collides_with_nearby?(x, y)
+    terrain = collides_with_terrain?(x, y)
+    !terrain && !collides_with_nearby?(x, y)
   end
 
   def box
@@ -61,6 +74,8 @@ class GameObject
     @y = y
 
     @object_pool.find_nearby(self, 50).each do |obj|
+      next if @disabled_collision_types.include? obj.class.name
+
       if collides_with_poly?(obj.box)
         new_dist = Utils.distance(@x, @y, x, y)
         old_dist = Utils.distance(@x, @y, old_x, old_y)

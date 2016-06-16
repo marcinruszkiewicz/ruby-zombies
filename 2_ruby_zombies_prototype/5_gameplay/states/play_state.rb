@@ -5,7 +5,7 @@ class PlayState < GameState
     @object_pool = ObjectPool.new(@map)
 
     @player = Player.new(@object_pool, 300, 100)
-    spawn_zombies 50
+    spawn_zombies 20
 
     @interface = Interface.new(@player)
   end
@@ -25,6 +25,10 @@ class PlayState < GameState
   def button_down(id)
     if id == Gosu::KbEscape
       GameState.switch(MenuState.instance)
+    end
+
+    if id == Gosu::KbF1
+      spawn_zombies 20
     end
   end
 
