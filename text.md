@@ -18,13 +18,13 @@ Jest dostępnych sporo bibliotek wspomagających tworzenie aplikacji, ale ja sku
 
 ## 2. Hello World
 
-Zacznijmy od tego, od czego zaczyna każdy programista, czyli od wyświetlenia Hello World na ekranie. 
+No to do dzieła! Zacznijmy od tego, od czego zaczyna każdy programista, czyli od wyświetlenia Hello World na ekranie. 
 
 ### 2.1. Okienko
 
-Mamy więc tutaj 10 linijek kodu - ładujemy naszą bibliotekę, deklarujemy okienko (dziedziczące po `Gosu::Window`), i w initializerze naszej klasy robimy dwie rzeczy - wywołujemy `super` z rozmiarami okienka oraz ustalamy nazwę, jaką ma mieć to okienko.
+Mamy więc tutaj 8 linijek kodu - ładujemy naszą bibliotekę, deklarujemy okienko (dziedziczące po `Gosu::Window`), i w initializerze naszej klasy robimy dwie rzeczy - wywołujemy `super` z rozmiarami okienka oraz ustalamy nazwę, jaką ma mieć to okienko.
 
-Na koniec uruchamiamy nasz kod i gotowe.
+Na koniec uruchamiamy naszą klasę i gotowe.
 
 ### 2.2. Obsługa klawiatury
 
@@ -118,23 +118,26 @@ Oczywiście z racji ograniczonej ilości czasu, nasza gra musi pozostać w doś�
 
 Przez ostatnią godzinę poznaliście trochę podstaw programowania gier, które tak naprawdę są niezmienne i wykorzystywane w praktycznie każdym silniku gier. Podsumujmy:
 
-* Pętla gry - input, update, draw
-* Trochę matematyki - kąt pomiędzy dwoma punktami, odległość pomiędzy dwoma punktami, czyli tak naprawdę trygonometria z podstawówki :)
-* Wyświetlanie sprite'ów oraz terenu złożonego z kafelków
-* Podstawowe kolizje pomiędzy obiektami
+* Pętla gry - input, update, draw.
+* Trochę matematyki - kąt pomiędzy dwoma punktami, odległość pomiędzy dwoma punktami, czyli tak naprawdę trygonometria z podstawówki. :)
+* Wyświetlanie sprite'ów oraz terenu złożonego z kafelków.
+* Podstawowe kolizje pomiędzy obiektami.
 
 ### 4.2. Co dalej?
 
 Można oczywiście dalej rozwijać naszą małą grę, dodając kolejne funkcjonalności, ale niestety to już temat na całkiem grubą książkę, a nie godzinną prezentację :)
 
-* testy rspeca - tak, można testować takie rzeczy w rspecu, bo dlaczego by nie
-* interfejs użytkownika - życie, punkty
-* lepsza grafika - animacje, bardziej urozmaicone poziomy
-* multiplayer - istnieją biblioteki Ruby które to w dużym stopniu ułatwiają
-* bardziej rozbudowany gameplay - różne bronie, różne poziomy itp
-* co kto jeszcze sobie wymyśli
+* Testy RSpeca - tak, można testować takie rzeczy w rspecu, bo dlaczego by nie?
+* Interfejs użytkownika - życie, punkty.
+* Lepsza grafika - animacje, bardziej urozmaicone poziomy.
+* Multiplayer - istnieją biblioteki Ruby które to w dużym stopniu ułatwiają.
+* Bardziej rozbudowany gameplay - różne bronie, różne poziomy itp.
+* Deployment na OS X i Windows.
+* Co kto jeszcze sobie wymyśli. :)
 
 ### 4.3 Przydatne linki
+
+Na koniec parę linków, z narzędziami których używałem podczas tworzenia tej prezentacji i towarzyszącego jej prototypu.
 
 * [Kod prezentacji](https://github.com/polcode/ruby-zombies)
 * [Gosu](https://www.libgosu.org)
