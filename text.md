@@ -90,7 +90,7 @@ Miały być zombie, no to w końcu nadszedł czas na zombie. Najpierw jednak tro
 
 Kursor, nazwa okienka oraz viewport wylatują do osobnej klasy `Interface`. Klasa `GameObject` będzie podstawą dla naszego bohatera i zombie, a nowa klasa `ObjectPool` posłuży nam jako odnośnik do wszystkich wygenerowanych przez nas obiektów oraz mapy, zeby było łatwiej zaprogramować interakcje pomiędzy nimi.
 
-Delikatnie zmieniła się klasa `Player` - oprócz zmian wynikacjących z refaktoringu, wprowadziłem tam drugiego sprite'a, który jest używany podczas poruszania się postaci. 
+Delikatnie zmieniła się klasa `Player` - oprócz zmian wynikających z refaktoringu, wprowadziłem tam drugiego sprite'a, który jest używany podczas poruszania się postaci. 
 
 Nowością jest klasa `Zombie`. Ich metoda `update` jest podobna do metody w klasie `Player`, z tym że zombie na początku stoją w miejscu, a gdy gracz zbliży się do nich na odległość mniejszą niż 300 pikseli, wtedy nasze zombie zaczyna iść w stronę gracza, wykorzystując znane nam już z pierwszego przykładu funkcje `get_movement` i `get_angle`. Odległość pomiędzy dwoma punktami zapewnia nam tajemnicza funkcja `hypot`, która jest po prostu długością przeciwprostokątnej w trójkącie prostokątnym. 
 
@@ -102,7 +102,9 @@ Niestety na razie nasze zombie nie robią zbyt wiele po dojściu do gracza, czas
 
 Metoda `box` definiuje nam prostokąt rozmiaru naszego sprite'a, obróconego o odpowiedni kąt, natomiast `draw_bounding_box` wyświetla nam trójkąciki w rogach tego prostokąta (tylko trójkąciki, żeby nie zasłaniać niepotrzebnie grafiki).
 
-Żeby to działało, obiekty muszą sprawdzać czy nastąpiła kolizja. Odpowiada za to metoda `collides_with_nearby?` w klasie `GameObject`. Wyszukuje ona obiekty które są w bliskiej odległości (i tak nie ma sensu sprawdzać innych), po czym sprawdza czy nasz wierzchołki naszego prostokątu kolizji zawierają się w drugim prostokącie. Jeśli tak, to wywołujemy metodę `collision_with` obu obiektów, gdzie można zdefiniować, co ma się stać w takim wypadku.
+Żeby to działało, obiekty muszą sprawdzać czy nastąpiła kolizja. Odpowiada za to metoda `collides_with_nearby?` w klasie `GameObject`. Wyszukuje ona obiekty które są w bliskiej odległości (i tak nie ma sensu sprawdzać innych), po czym sprawdza czy wierzchołki naszego prostokątu kolizji zawierają się w drugim prostokącie. Jeśli tak, to wywołujemy metodę `collision_with` obu obiektów, gdzie można zdefiniować, co ma się stać w takim wypadku.
+
+Na koniec dodajemy nasze wyliczenia do metody `can_move_to?` w `GameObject`, tak żeby wszystkie obiekty automatycznie obsługiwały kolizje.
 
 ### 3.5. Gameplay
 
