@@ -1,4 +1,4 @@
-# Aplikacje, Ruby oraz Zombie!
+# ~~Aplikacje,~~ Ruby oraz Zombie!
 
 ## 1. Intro
 
@@ -8,7 +8,7 @@ Często zapominamy o tym, że Ruby nie kończy się na Railsach. Jednym z mniej 
 
 Niestety, chociaż Ruby jest fajnym językiem programowania, większość osób ogranicza się w kontakcie z nim do Railsów, ewentualnie jakichś drobnych skryptów konsolowych, natomiast tworzenie aplikacji desktopowych oraz mobilnych (przez co, jak zapewne domyśleliście się po tytule prezentacji, rozumiem także i gry) to jedno z mniej oczywistych, a nadal całkowicie poprawnych zastosowań tego języka. 
 
-Mamy więc na przykład [RubyMotion](http://www.rubymotion.com), które pozwala na przygotowanie aplikacji mobilnych dla iOSa oraz Androida. Możemy także przygotować dystrybuowalne paczki zawierające nasz kod oraz biblioteki potrzebne do jego działania (gemy oraz interpreter Ruby) za pomocą jednego z narzędzi typu [Ocra](https://github.com/larsch/ocra) czy [Releasy](https://github.com/Spooner/releasy). 
+Mamy więc [RubyMotion](http://www.rubymotion.com), które pozwala na przygotowanie aplikacji mobilnych dla iOSa oraz Androida, a także - w płatnej jego wersji - na OS X. Możemy też przygotować paczkę Windowsową zawierającą nasz kod oraz biblioteki potrzebne do jego działania (gemy oraz interpreter Ruby) za pomocą na przykład narzędzia [Ocra](https://github.com/larsch/ocra).
 
 Zanim jednak zaczniemy cokolwiek pakować i dystrybuować, trzeba najpierw mieć co, tak więc przejdźmy dalej.
 
