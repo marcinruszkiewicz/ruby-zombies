@@ -8,13 +8,13 @@ Często zapominamy o tym, że Ruby nie kończy się na Railsach. Jednym z mniej 
 
 Niestety, chociaż Ruby jest fajnym językiem programowania, większość osób ogranicza się w kontakcie z nim do Railsów, ewentualnie jakichś drobnych skryptów konsolowych, natomiast tworzenie aplikacji desktopowych oraz mobilnych (przez co, jak zapewne domyśleliście się po tytule prezentacji, rozumiem także i gry) to jedno z mniej oczywistych, a nadal całkowicie poprawnych zastosowań tego języka. 
 
-Mamy więc na przykład RubyMotion, które pozwala na przygotowanie aplikacji mobilnych dla iOSa oraz Androida. Możemy także przygotować dystrybuowalne paczki zawierające nasz kod oraz biblioteki potrzebne do jego działania (gemy oraz interpreter Ruby) za pomocą jednego z narzędzi typu Ocra (https://github.com/larsch/ocra - aplikacje Windowsowe) czy Releasy (https://github.com/sveinbjornt/Platypus - OS X). 
+Mamy więc na przykład [RubyMotion](http://www.rubymotion.com), które pozwala na przygotowanie aplikacji mobilnych dla iOSa oraz Androida. Możemy także przygotować dystrybuowalne paczki zawierające nasz kod oraz biblioteki potrzebne do jego działania (gemy oraz interpreter Ruby) za pomocą jednego z narzędzi typu [Ocra](https://github.com/larsch/ocra) czy [Releasy](https://github.com/Spooner/releasy). 
 
 Zanim jednak zaczniemy cokolwiek pakować i dystrybuować, trzeba najpierw mieć co, tak więc przejdźmy dalej.
 
 ### 1.2. Gosu
 
-Jest dostępnych sporo bibliotek wspomagających tworzenie aplikacji, ale ja skupię się dzisiaj na jednej z nich, czyli gosu (https://github.com/gosu/gosu). Biblioteka ta daje nam dostęp do rzeczy potrzebnych przy tworzeniu gier, czyli wyświetlania grafiki 2D, dźwięków, obsługi myszy i klawiatury oraz podstawowej pętli aplikacji.
+Jest dostępnych sporo bibliotek wspomagających tworzenie aplikacji, ale ja skupię się dzisiaj na jednej z nich, czyli [gosu](https://github.com/gosu/gosu). Biblioteka ta daje nam dostęp do rzeczy potrzebnych przy tworzeniu gier, czyli wyświetlania grafiki 2D, dźwięków, obsługi myszy i klawiatury oraz podstawowej pętli aplikacji.
 
 ## 2. Hello World
 
@@ -88,19 +88,19 @@ PlayState nie zmienił się zbytnio - przekazujemy dla naszej postaci koordynaty
 
 Miały być zombie, no to w końcu nadszedł czas na zombie. Najpierw jednak trochę refaktoringu, żeby było łatwiej. 
 
-Kursor, nazwa okienka oraz viewport wylatują do osobnej klasy Interface. Klasa GameObject będzie podstawą dla naszego bohatera i zombie, a nowa klasa ObjectPool posłuży nam jako odnośnik do wszystkich wygenerowanych przez nas obiektów oraz mapy, zeby było łatwiej zaprogramować interakcje pomiędzy nimi.
+Kursor, nazwa okienka oraz viewport wylatują do osobnej klasy `Interface`. Klasa `GameObject` będzie podstawą dla naszego bohatera i zombie, a nowa klasa `ObjectPool` posłuży nam jako odnośnik do wszystkich wygenerowanych przez nas obiektów oraz mapy, zeby było łatwiej zaprogramować interakcje pomiędzy nimi.
 
-Delikatnie zmieniła się klasa Player - oprócz zmian wynikacjących z refaktoringu, wprowadziłem tam drugiego sprite'a, który jest używany podczas poruszania się postaci. 
+Delikatnie zmieniła się klasa `Player` - oprócz zmian wynikacjących z refaktoringu, wprowadziłem tam drugiego sprite'a, który jest używany podczas poruszania się postaci. 
 
-Nowością jest klasa Zombie. Ich metoda update jest podobna do metody w klasie Player, z tym że zombie na początku stoją w miejscu, a gdy gracz zbliży się do nich na odległość mniejszą niż 300 pikseli, wtedy nasze zombie zaczyna iść w stronę gracza, wykorzystując znane nam już z pierwszego przykładu funkcje get_movement i get_angle. Odległość pomiędzy dwoma punktami zapewnia nam tajemnicza funkcja hypot, która jest po prostu długością przeciwprostokątnej w trójkącie prostokątnym. 
+Nowością jest klasa Zombie. Ich metoda update jest podobna do metody w klasie `Player`, z tym że zombie na początku stoją w miejscu, a gdy gracz zbliży się do nich na odległość mniejszą niż 300 pikseli, wtedy nasze zombie zaczyna iść w stronę gracza, wykorzystując znane nam już z pierwszego przykładu funkcje `get_movement` i `get_angle`. Odległość pomiędzy dwoma punktami zapewnia nam tajemnicza funkcja `hypot`, która jest po prostu długością przeciwprostokątnej w trójkącie prostokątnym. 
 
-Na koniec drobne zmiany w PlayState - generujemy odpowiednią ilość zombie w losowych miejscach na mapie, odrzucając wyniki które trafiły w kafelek, przez który nie można przejść.
+Na koniec drobne zmiany w `PlayState` - generujemy odpowiednią ilość zombie w losowych miejscach na mapie, odrzucając wyniki które trafiły w kafelek, przez który nie można przejść.
 
 ### 3.4. Kolizje obiektów
 
 Niestety na razie nasze zombie nie robią zbyt wiele po dojściu do gracza, czas więc to zmienić, dodając kolizje pomiędzy obiektami. Żeby umożliwić takie kolizje, musimy zdefiniować granice naszych obiektów, co zrobimy dodając dwie metody do klasy GameObject.
 
-Metoda box definiuje nam prostokąt rozmiaru naszego sprite'a, obróconego o odpowiedni kąt, natomiast draw_bounding_box wyświetla nam trójkąciki w rogach tego prostokąta (tylko trójkąciki, żeby nie zasłaniać niepotrzebnie grafiki).
+Metoda `box` definiuje nam prostokąt rozmiaru naszego sprite'a, obróconego o odpowiedni kąt, natomiast `draw_bounding_box` wyświetla nam trójkąciki w rogach tego prostokąta (tylko trójkąciki, żeby nie zasłaniać niepotrzebnie grafiki).
 
 ## 4. Na zakończenie
 
@@ -128,9 +128,9 @@ Można oczywiście dalej rozwijać naszą małą grę, dodając kolejne funkcjon
 
 ### 4.3 Przydatne linki
 
-* Kod prezentacji - https://github.com/polcode/ruby-zombies
-* Gosu - https://www.libgosu.org
-* Shoebox - http://renderhjs.net/shoebox/
-* Tiled - http://www.mapeditor.org
-* Grafika - http://www.kenney.nl
-* Książka - https://leanpub.com/developing-games-with-ruby/
+* [Kod prezentacji](https://github.com/polcode/ruby-zombies)
+* [Gosu](https://www.libgosu.org)
+* [Shoebox](http://renderhjs.net/shoebox/)
+* [Tiled](http://www.mapeditor.org)
+* [Grafika](http://www.kenney.nl)
+* [Książka](https://leanpub.com/developing-games-with-ruby/)
