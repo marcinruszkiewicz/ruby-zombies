@@ -8,6 +8,7 @@ class ObjectPool
 
   def update
     @objects.map(&:update)
+    @objects.reject! { |obj| obj.removable == true }
   end
 
   def draw(viewport)

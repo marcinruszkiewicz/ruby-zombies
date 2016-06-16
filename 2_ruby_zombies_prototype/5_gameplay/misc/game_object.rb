@@ -1,5 +1,5 @@
 class GameObject
-  attr_accessor :hp, :x, :y, :angle, :screen_x, :screen_y, :object_pool, :sprite
+  attr_accessor :hp, :x, :y, :angle, :screen_x, :screen_y, :object_pool, :sprite, :removable
 
   def initialize(object_pool, x, y)
     @object_pool = object_pool
@@ -9,6 +9,7 @@ class GameObject
     @x = x
     @y = y
     @in_collision = false
+    @removable = false
   end
 
   def update; end
