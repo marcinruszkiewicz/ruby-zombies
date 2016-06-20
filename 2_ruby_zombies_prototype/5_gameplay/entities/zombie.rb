@@ -20,7 +20,6 @@ class Zombie < GameObject
       if Gosu.milliseconds - (@last_shot || 0) > BITE_DELAY
         @last_shot = Gosu.milliseconds
         @player.hp -= 1
-        puts @player.hp
       end
     end
   end

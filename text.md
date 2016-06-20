@@ -110,7 +110,15 @@ Na koniec dodajemy nasze wyliczenia do metody `can_move_to?` w `GameObject`, tak
 
 W tym momencie mamy już praktycznie wszystkie podstawowe bloki naszej gry - mamy planszę, obiekty, przeciwników, możemy sterować naszym bohaterem, zachodzą kolizje między wszystkim co trzeba - można więc zająć się właściwym gameplayem.
 
+W klasie `GameObject` rozbudowałem nieco obsługę kolizji - można teraz zdefiniować niektóre z klas jako ignorowane przez obiekt przy kolizjach (co nam się za chwilę przyda), a także doszła obsługa punktów życia oraz usuwanie obiektów z gry.
 
+Na początek dodajmy klasę `Bullet`, żebyśmy mogli pozbyć się zachodzącego tutaj wyraźnie problemu z hordą zombie. Klasa ta nie różni się wiele od pozostałych obiektów w grze - jedyną nowością jest obsługa kolizji z różnymi typami obiektów. Deklarujemy klasę Player jako ignorowaną przy kolizjach, po czym jeśli trafiliśmy w zombie, to odejmujemy im jeden punkt życia, a nasz pocisk jest usuwany.
+
+Klasa `Zombie` także otrzymała obsługę kolizji - jeśli nastąpi kolizja z Playerem, nasz bohater zacznie powoli tracić życie. Jest to ograniczone do jednego punktu na sekundę, tak żeby gracz miał szansę odejść od atakującego go zombie.
+
+Klasa `Player` ma dwie nowe metody - `death` definiuje co ma się stać jeśli punkty życia obiektu spadną do zera, a `fire_bullet` jest uruchamiana po wciśnięciu lewego przycisku myszy, po czym tworzy nowy obiekt `Bullet` i nadaje mu ten sam kąt, pod jakim stoi postać gracza.
+
+Dodałem także nowy stan gry, czyli `PauseState` - jest on praktycznie taki sam, jak wcześniejszy `MenuState`, co pozwala nam na rozróżnienie pauzy od menu początkowego - gdyby tego nie zrobić, trzeba by sprawdzać w `MenuState`, czy gracz jest jeszcze żywy i jeśli tak, to nie pozwalać na kontynuację gry.
 
 ## 4. Na zakończenie
 
