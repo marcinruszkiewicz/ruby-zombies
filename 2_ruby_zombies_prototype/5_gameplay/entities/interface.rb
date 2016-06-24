@@ -4,7 +4,7 @@ class Interface
   end
 
   def update
-    $window.caption = "RubyZombies. [FPS: #{Gosu.fps}.]"
+    $window.caption = "RubyZombies!!!!!!. [FPS: #{Gosu.fps}.]"
   end
 
   def draw
